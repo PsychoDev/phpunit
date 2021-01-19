@@ -1,0 +1,19 @@
+version: '3.2'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: app/Dockerfile-nginx
+    ports:
+      - '8081:80'
+    volumes:
+      - './app:/var/www/html'
+      - './site.conf:/etc/nginx/conf.d/site.conf'
+    links:
+      - php
+  php:
+    build:
+      context: .
+      dockerfile: app/Dockerfile-fpm
+    volumes:
+      - './app:/var/www/html'
