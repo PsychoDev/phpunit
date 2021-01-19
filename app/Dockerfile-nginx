@@ -1,7 +1,1 @@
 FROM nginx:latest
-
-ARG APP_ENV=local
-ENV APP_ENV=${APP_ENV}
-
-RUN echo "${APP_ENV}" &&\
- $("$APP_ENV" == "local") echo "YYYY" &&\
